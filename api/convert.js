@@ -1,6 +1,6 @@
 import sharp from 'sharp';
 
-// Configure Sharp for Vercel
+// Fix for Vercel
 process.env.SHARP_IGNORE_GLOBAL_LIBVIPS = '1';
 
 export default async (req, res) => {
@@ -12,17 +12,19 @@ export default async (req, res) => {
     }
     const buffer = Buffer.concat(chunks);
 
-    // Validate image
+    // Validate
     if (buffer.length < 100) {
       return res.status(400).json({ error: "Invalid image file" });
     }
 
-    // Process with Sharp (basic Ghibli effect)
+    // Ghibli effect pipeline
     const processed = await sharp(buffer)
       .modulate({
         brightness: 1.1,
-        saturation: 1.7
+        saturation: 1.8,
+        hue: 15
       })
+      .blur(0.4)
       .jpeg({ quality: 90 })
       .toBuffer();
 
