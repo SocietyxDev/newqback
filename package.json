@@ -1,11 +1,14 @@
 {
-  "name": "backend",
+  "name": "ghibli-backend",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "postinstall": "npm_config_arch=x64 npm_config_platform=linux npm rebuild sharp"
+    "postinstall": "npm rebuild sharp --build-from-source"
   },
   "dependencies": {
     "sharp": "0.33.2"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
