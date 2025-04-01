@@ -1,0 +1,11 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm_config_arch=x64 npm_config_platform=linux npm rebuild sharp"
+  },
+  "dependencies": {
+    "sharp": "0.33.2"
+  }
+}
