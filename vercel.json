@@ -2,11 +2,20 @@
   "version": 2,
   "builds": [{
     "src": "api/convert.js",
-    "use": "@vercel/node"
+    "use": "@vercel/node",
+    "config": {
+      "includeFiles": ["node_modules/sharp/**"]
+    }
   }],
   "routes": [{
     "src": "/api/convert",
     "dest": "api/convert.js",
     "methods": ["POST"]
-  }]
+  }],
+  "functions": {
+    "api/convert.js": {
+      "memory": 3008,
+      "maxDuration": 15
+    }
+  }
 }
